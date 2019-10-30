@@ -1,4 +1,5 @@
 from django.db.models import Count, Q
+from django.contrib.auth import authenticate,login,logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Post,Comment,Author, PostView
@@ -131,3 +132,20 @@ def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect(reverse("post-list"))
+
+def loginView(request):
+    if request.user.is_authenticated:
+        return redirect("index")
+    else:
+        if request.method =="POST":
+            user = request.POST.get('user')
+            password = request.POST.get('pass')
+            auth = authenticate(request, username=user, password=password)
+            if auth is not None:
+                login(request, auth)
+                return redirect("index")
+    return render(request, "login.html")
+    
+def get_logout(request):
+    logout(request)
+    return redirect("index")    
