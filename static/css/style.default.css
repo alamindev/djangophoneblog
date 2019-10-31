@@ -58,6 +58,7 @@ ul {
 section {
   padding: 100px 0;
   overflow-x: hidden;
+  background-color:#dfded9;
 }
 
 button,
@@ -107,7 +108,9 @@ h1:hover a {
 .widget {
   margin-bottom: 40px;
   padding: 30px;
-  border: 1px solid #eee;
+  border: 1px solid #d6fa93;
+  color:black;
+
 }
 
 .widget header {
@@ -384,10 +387,12 @@ h6 {
 }
 
 .text-big {
-  font-size: 1.4em;
+  border-color:red;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.8em;
   color: #111;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a.hero-link {
@@ -846,6 +851,7 @@ section.latest-posts header {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   margin-bottom: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .post h3:hover {
@@ -2584,3 +2590,5 @@ a.text-light:focus, a.text-light:hover {
 a.text-dark:focus, a.text-dark:hover {
   color: #1d2124 !important;
 }
+
+
