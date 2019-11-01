@@ -2,6 +2,22 @@
   {% extends 'base.html' %}
  {% load static  %}
   {% block content %}
+  <style>
+      .alert-success {
+          color: #155724;
+          background-color: #d4edda;
+          border-color: #c3e6cb;
+          height: 50px;
+          margin: 50px;
+      }
+      </style>
+      {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
    <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -36,6 +52,9 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
+            {% if request.user.is_authenticated %}
+            <button class="btn btn-success"><a style="color:#0004ff;" href="{% url 'password_change' %}"> Password change</a></button>
+            {% endif %}
             <h2 class="h3">Some great intro here</h2>
             <p class="text-big">Place a nice <strong>introduction</strong> here <strong>to catch reader's attention</strong>.
                <bold>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do

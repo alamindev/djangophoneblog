@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Post,Comment,Author, PostView, About
 from .forms import CommentForm, PostForm, registerForm,AboutForm,ContectForm
 from marketing.models import Signup
+from django.contrib import messages
 # Create your views here.
 
 def get_author(user):
@@ -143,7 +144,12 @@ def loginView(request):
             auth = authenticate(request, username=user, password=password)
             if auth is not None:
                 login(request, auth)
+                messages.success(request, "Login successfully")
                 return redirect("index")
+            else:
+                messages.error(request, "Username and Password mismatch")
+                return render(request, "login.html")
+                    
     return render(request, "login.html")
     
 def get_logout(request):
@@ -155,7 +161,8 @@ def register(request):
     if form.is_valid():
         new_user = form.save(commit=False)
         new_user.save()
-        return redirect("/")
+        messages.success(request, "Registeration Successfully")
+        return redirect("index")
     context = {
         'form':form
     }    
@@ -177,6 +184,7 @@ def ContectView(request):
     if form.is_valid():
         new_contect = form.save(commit=False)
         new_contect.save()
+        messages.success(request, "Create contect ")
         return redirect("index")
     context = {
         "form":form
