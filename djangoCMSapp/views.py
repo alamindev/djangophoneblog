@@ -2,8 +2,8 @@ from django.db.models import Count, Q
 from django.contrib.auth import authenticate,login,logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .models import Post,Comment,Author, PostView
-from .forms import CommentForm, PostForm
+from .models import Post,Comment,Author, PostView, About
+from .forms import CommentForm, PostForm, registerForm,AboutForm,ContectForm
 from marketing.models import Signup
 # Create your views here.
 
@@ -148,4 +148,43 @@ def loginView(request):
     
 def get_logout(request):
     logout(request)
-    return redirect("index")    
+    return redirect("index")
+
+def register(request):
+    form = registerForm(request.POST or None)
+    if form.is_valid():
+        new_user = form.save(commit=False)
+        new_user.save()
+        return redirect("/")
+    context = {
+        'form':form
+    }    
+    return render(request, "register.html", context)
+
+def AboutView(request):
+    form = AboutForm(request.POST or None)
+    if form.is_valid():
+        new_user = form.save(commit=False)
+        new_user.save()
+        return redirect("index")
+    context = {
+        "form":form
+    }      
+    return render(request, "About.html", context)
+
+def ContectView(request):
+    form = ContectForm(request.POST or None)
+    if form.is_valid():
+        new_contect = form.save(commit=False)
+        new_contect.save()
+        return redirect("index")
+    context = {
+        "form":form
+    }    
+    return render(request, "Contect.html", context)
+def TeamView(request):
+    query = About.objects.all()
+    context = {
+        'query':query
+    }
+    return render(request, "Team.html", context)    

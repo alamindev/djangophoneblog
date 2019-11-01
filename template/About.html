@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h2 style="text-align: center; color:red; margin-top: 20px;">This Page not access Public user</h2>
+
+  <img style="margin-left: 400px;min-width: 300px;min-height: 400px;" src="{% static 'img/file.jpg' %}" alt="">
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 style="text-align: center; color: #f72e0b; margin:10px;" > Contect Page </h2>
+        <div class="panel-body">
+                <div class="col-4 offset-4 mb-5 mt-5">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <input type="submit" class="btn btn-success">
+                        </form>
+                </div>
+
+ 
+{% endblock %}

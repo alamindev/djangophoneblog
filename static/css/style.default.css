@@ -690,6 +690,12 @@ section.featured-posts .text-inner {
   height: 100%;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background: black;
+  border-block-end-color: gray;
+  border-color: red;
+  font-family: cursive;
+  font-size: 20px;
+  color: red;
 }
 
 section.featured-posts a {
@@ -1058,7 +1064,7 @@ section.gallery .overlay i {
 * ==========================================================
 */
 footer.main-footer {
-  background: #0e0e0e;
+  background: hsla(13, 6%, 43%, 0.856);
   padding: 100px 0 0;
   color: #fff;
 }
@@ -1111,11 +1117,13 @@ footer.main-footer .latest-posts a:hover {
 
 footer.main-footer .latest-posts strong {
   display: block;
+  color :darkblue;
+
 }
 
 footer.main-footer .latest-posts .date {
   font-size: 0.85em;
-  color: #aaa;
+  color: rgb(7, 6, 6);
 }
 
 footer.main-footer .copyrights {
@@ -1322,6 +1330,7 @@ main.posts-listing .post-footer {
 .blog-post {
   padding-left: 0;
   padding-right: 0;
+  background: beige;
 }
 
 .blog-post .post-footer {
@@ -1380,6 +1389,7 @@ main.posts-listing .post-footer {
   padding: 10px 20px;
   border: 1px solid #eee;
   margin-bottom: 15px;
+  background: rebeccapurple;
 }
 
 .blog-post .posts-nav a:hover {

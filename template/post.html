@@ -3,16 +3,18 @@
    {% block content %}
    <style>
     .post-body img{
-      width:100%;
+      width:50%;
     }
+    
    </style>
+   
     <div class="container">
       <div class="row">
         <!-- Latest Posts -->
         <main class="post blog-post col-lg-8"> 
           <div class="container">
             <div class="post-single">
-              <div class="post-thumbnail"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></div>
+              <div class="post-thumbnail"><img src="{{ post.thumbnail.url }}" alt="..." style="height: 400px; width: 400px;" class="img-thumbnail"></div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                     
@@ -22,8 +24,10 @@
                     {% endfor %}
                   </div>
                   <div>
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'post-update' id=post.id %}">Update</a>
                     <a href="{% url 'post-delete' id=post.id %}">Delete</a>
+                    {% endif %}
                   </div>
                 </div>
                 <h1>{{ post.title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
@@ -100,7 +104,7 @@
                   </form>
                 </div>
                 {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-primary">Login To Comment</a>
+                <a href="{% url 'login' %}" class="btn btn-primary">Login To Comment</a>
                 {% endif %}
               </div>
             </div>

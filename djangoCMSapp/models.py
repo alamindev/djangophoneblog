@@ -52,6 +52,11 @@ class Post(models.Model):
     featured = models.BooleanField()
     previous_post = models.ForeignKey('self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
     next_post = models.ForeignKey('self', related_name='next', on_delete=models.SET_NULL, blank=True, null=True)
+    display = models.CharField(max_length=200, blank=True)
+    processor = models.CharField(max_length=200, blank=True)
+    Front_camera = models.CharField(max_length=200, blank=True)
+    storage = models.CharField(max_length=200, blank=True)
+    os = models.CharField(max_length=100, blank=True)
     def __str__(self):
         return self.title
     def get_absolute_url(self):
@@ -78,7 +83,23 @@ class Post(models.Model):
 
     @property
     def view_count(self):
-        return PostView.objects.filter(post=self).count()    
+        return PostView.objects.filter(post=self).count()
+
+class About(models.Model):
+    Name = models.CharField(max_length=100, blank=True)
+    Email = models.EmailField(max_length=100, null=True, blank=True, unique=True)
+    profile_picture = models.ImageField()
+
+    def __str__(self):
+        return self.Name 
+
+class Contect(models.Model):
+    Name = models.CharField(max_length=100)
+    Email = models.EmailField(max_length=100)
+    Messages = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.Name
         
 
 

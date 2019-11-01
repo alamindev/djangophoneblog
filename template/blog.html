@@ -12,7 +12,7 @@
               {% for post in queryset %}
               <!-- post -->
               <div class="post col-xl-6">
-                <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img style="max-height:300px;max-width:300px;" src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img style="height:300px;width:300px;" src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                    {% comment %} <div class="date meta-last">20 May | 2016</div>{% endcomment %}
